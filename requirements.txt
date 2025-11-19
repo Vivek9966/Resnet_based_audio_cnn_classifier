@@ -1,0 +1,13 @@
+torch
+torchaudio
+pandas
+numpy
+scipy
+tensorboard
+tqdm
+torchcodec
+librosa 
+fastapi
+pydantic
+soundfile
+requests
