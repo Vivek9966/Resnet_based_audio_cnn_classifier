@@ -90,7 +90,7 @@ def train():
     esc50_dir = Path("/opt/esc50-data")
     train_transform = nn.Sequential(
         T.MelSpectrogram(
-            sample_rate= 22050,
+            sample_rate= 22050*2,
             n_fft=1024,
             hop_length=512,
             n_mels=128,
@@ -104,7 +104,7 @@ def train():
     )
     val_transform = nn.Sequential(
         T.MelSpectrogram(
-            sample_rate= 22050,
+            sample_rate= 22050*2,
             n_fft=1024,
             hop_length=512,
             n_mels=128,
@@ -137,11 +137,10 @@ def train():
         optimizer,
         max_lr=.002,
         epochs=num_epoch,
-        steps_per_epoch=len(train_dataloader),
-        pct_start=.1
-    )
+        steps_per_epoch = len(train_dataloader),
+        pct_start=.1)
     best_acc =  0.0
-    print("starting trainnning")
+   # print("starting trainnning")
     for epoch in range(num_epoch):
         model.train()
         epoch_loss = 0.0
@@ -165,7 +164,6 @@ def train():
         avg_epoch_loss= epoch_loss /len(train_dataloader)
         writer.add_scalar("Loss/Train",avg_epoch_loss,epoch)
         writer.add_scalar("Learnig Rate",optimizer.param_groups[0]['lr'],epoch)
-        #val after epoch
         model.eval()
         corr =0
         tot=0

@@ -32,7 +32,7 @@ class Audio_processor():
     def __init__(self):
         self.transform = nn.Sequential(
             T.MelSpectrogram(
-            sample_rate= 22050,
+            sample_rate= 22050*2,
             n_fft=1024,
             hop_length=512,
             n_mels=128,
@@ -76,8 +76,8 @@ class Audio_classifier():
         if audio_data.ndim > 1:
             audio_data = np.mean(audio_data, axis=1)
         
-        if sample_rate != 22050:
-            audio_data = librosa.resample(y=audio_data, orig_sr=sample_rate, target_sr=22050)  # Fixed: - to =, target_rate to target_sr
+        if sample_rate != 22050*2:
+            audio_data = librosa.resample(y=audio_data, orig_sr=sample_rate, target_sr=22050*2)  
         
         spectogram = self.ap.process_audio_cnk(audio_data)
         spectogram = spectogram.to(self.device)
