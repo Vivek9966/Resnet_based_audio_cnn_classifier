@@ -1,8 +1,4 @@
-Great — here’s the README **fully formatted for GitHub**, clean sections, emojis, badges, proper markdown hierarchy, and polished wording.
 
-If you want repo-specific badges (tests, deployment, Docker, etc.), I can add those too.
-
----
 
 # 🎧 ACNN Audio Classification – ESC-50
 
